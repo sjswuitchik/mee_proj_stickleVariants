@@ -9,10 +9,10 @@ git checkout dev # to work with write_samples.py for metadata creation that's in
 cd /scratch/sjsmith/shunda/
 ls *_R1.fastq.gz > sR1s.txt
 sed 's/\_R1\.fastq\.gz//g' sR1s.txt > shunda_samples.txt
-mv shunda_samples.txt ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/shortRead_mapping_variantCalling/
+mv shunda_samples.txt ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/shunda/shortRead_mapping_variantCalling/
 
 # download ref genome
-cd  ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/shortRead_mapping_variantCalling/
+cd  ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/shunda/shortRead_mapping_variantCalling/
 mkdir data/genome/
 cd data/genome
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/902/500/615/GCF_902500615.1_NSP_V7/GCF_902500615.1_NSP_V7_genomic.fna.gz
@@ -25,7 +25,5 @@ python3 write_samples.py -s ../shunda_samples.txt -f /scratch/sjsmith/shunda/ -r
 
 
 
-
-cd shortRead_mapping_variantCalling/
 
 
