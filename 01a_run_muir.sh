@@ -23,4 +23,4 @@ python3 write_samples.py -s ../muir_samples.txt -f /scratch/sjsmith/muir/ -r ../
 cd ../
 
 # run pipeline - nb: to run on Cedar, removed #SBATCH -p shared from run_pipeline.sh bc that is Cannon specific
-sbatch run_pipeline.sh --account=def-jonmee
+sbatch --account=def-jonmee run_pipeline.sh
