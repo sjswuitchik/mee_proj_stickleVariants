@@ -20,10 +20,7 @@ cd ../../workflow
 
 # make sample metadata sheets
 python3 write_samples.py -s ../shunda_samples.txt -f /scratch/sjsmith/shunda/ -r ../data/genome/GCF_902500615.1_NSP_V7_genomic.fna.gz -o Pungitius_pungitius
+cd ..
 
-
-
-
-
-
-
+# run pipeline
+sbatch run_pipeline.sh --account=jonmee
