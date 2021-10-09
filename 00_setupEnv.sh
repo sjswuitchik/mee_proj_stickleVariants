@@ -1,1 +1,1 @@
-conda create -n snakemake -c bioconda -c conda-forge snakemake pandas 
+conda create -n snakemake -c bioconda -c conda-forge snakemake pandas yappi
