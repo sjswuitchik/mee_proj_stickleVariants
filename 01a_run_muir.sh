@@ -7,9 +7,9 @@ git checkout dev # to work with write_samples.py for metadata creation that's in
 
 # make sample lists and move to working dir
 cd /scratch/sjsmith/muir/
-ls *_R1.fastq.gz > mR1s.txt
-sed 's/\_R1\.fastq\.gz//g' mR1s.txt > muir_samples.txt
-mv muir_samples.txt ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/muir/shortRead_mapping_variantCalling/
+ls *_R1.fastq.gz > mR1s.csv
+sed 's/\_R1\.fastq\.gz//g' mR1s.csv > muir_samples.csv
+mv muir_samples.csv ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/muir/shortRead_mapping_variantCalling/
 
 # download ref genome
 cd  ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/muir/shortRead_mapping_variantCalling/
