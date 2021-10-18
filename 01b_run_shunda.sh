@@ -7,6 +7,8 @@ git checkout dev # to work with write_samples.py for metadata creation that's in
 
 # make sample lists and move to working dir
 cd /scratch/sjsmith/shunda/
+.././brename -e -p "\." -r "_" -R
+.././brename -e -p "_fastq" -r ".fastq" -R 
 ls *_R1.fastq.gz > sR1s.txt
 sed 's/\_R1\.fastq\.gz//g' sR1s.txt > shunda_samples.txt
 mv shunda_samples.txt ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/shunda/shortRead_mapping_variantCalling/
