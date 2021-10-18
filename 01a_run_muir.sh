@@ -1,11 +1,14 @@
 ## in /home/sjsmith/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/muir on Cedar (CC HPC) 
 ## FASTQs live in /scratch/sjsmith/muir 
 
-# nb: in ~/projects/def-jonmee/sjsmith/
+# nb: in /scratch/sjsmith/
 # snakemake can have issues with too many `.` in filenames, so download brename to rename all FASTQs before making sample lists
 wget https://github.com/shenwei356/brename/releases/download/v2.11.1/brename_linux_amd64.tar.gz
 tar zxvf brename_linux_amd64.tar.gz 
 rm brename_linux_amd64.tar.gz
+cd muir/
+.././brename -e -p "\." -r "_" -R
+.././brename -e -p "_fastq" -r ".fastq" -R 
 
 
 # clone in pipeline repo
