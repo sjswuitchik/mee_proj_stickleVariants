@@ -10,7 +10,6 @@ cd muir/
 .././brename -e -p "\." -r "_" -R
 .././brename -e -p "_fastq" -r ".fastq" -R 
 
-
 # clone in pipeline repo
 git clone https://github.com/harvardinformatics/shortRead_mapping_variantCalling.git
 git checkout dev # to work with write_samples.py for metadata creation that's in dev 
