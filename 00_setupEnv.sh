@@ -1,1 +1,4 @@
-conda create -n snakemake -c bioconda -c conda-forge snakemake pandas yappi
+conda install -n base -c conda-forge mamba
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+conda activate snakemake 
+conda install -n snakemake -c conda-forge pandas yappi
