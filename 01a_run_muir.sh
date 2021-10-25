@@ -31,5 +31,5 @@ cd ../../workflow
 python3 write_samples.py -s ../muir_samples.txt -f /scratch/sjsmith/muir/ -r ../data/genome/GCF_902500615.1_NSP_V7_genomic.fna.gz -o Pungitius_pungitius
 cd ../
 
-# run pipeline - nb: to run on Cedar, removed #SBATCH -p shared from run_pipeline.sh bc that is Cannon specific
+# run pipeline - nb: to run on Cedar, removed #SBATCH -p shared from run_pipeline.sh bc that is Cannon specific, added account:  def-jonmee under __default__ in profiles/slurm/cluster_config.yml
 sbatch --account=def-jonmee run_pipeline.sh
