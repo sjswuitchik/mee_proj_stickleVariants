@@ -25,6 +25,7 @@ cd  ~/projects/def-jonmee/sjsmith/mee_proj_stickleVariants/muir/shortRead_mappin
 mkdir data/genome/
 cd data/genome
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/902/500/615/GCF_902500615.1_NSP_V7/GCF_902500615.1_NSP_V7_genomic.fna.gz
+gunzip GCF_902500615.1_NSP_V7_genomic.fna.gz
 cd ../../workflow
 
 # make sample metadata sheets
