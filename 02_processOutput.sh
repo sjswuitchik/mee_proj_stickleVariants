@@ -16,7 +16,7 @@ vcftools --gzvcf shunda.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --re
 # 2701687
 
 # convert filtered VCF to table for use in multiallelic site removal script
-gatk VariantsToTable -V shunda.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -O shunda.var.txt
+sbatch --account=def-jonmee run_var2tab_shunda.sh
 
 ## in /scratch/sjsmith/muir/snpArcher
 mkdir process_out
@@ -32,4 +32,4 @@ vcftools --gzvcf muir.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --reco
 # 3102019
 
 # convert filtered VCF to table for use in multiallelic site removal script
-gatk VariantsToTable -Xmx8g -V muir.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -O muir.var.txt
+sbatch --account=def-jonmee run_var2tab_muir.sh
