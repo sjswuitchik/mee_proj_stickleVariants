@@ -10,4 +10,4 @@
 
 source activate gatk
 
-gatk VariantsToTable -Xmx8g -V muir.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -O muir.var.txt
+gatk VariantsToTable -Xmx48g -V muir.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -F AF -F DP -F QD -F FS -F MQ -F MQRankSum -F ReadPosRankSum -F TYPE -F FILTER -GF AD -GF DP -GF GQ -GF GT -GF SB -O muir.var.txt --split-multi-allelic
