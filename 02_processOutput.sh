@@ -18,7 +18,7 @@ vcftools --gzvcf shunda.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --re
 sbatch --account=def-jonmee run_var2tab_shunda.sh
 
 # run filtering script
-python remove_multi.py shunda.var.txt shunda.var.noMulti.txt
+sbatch --account=def-jonmee run_removeMulti_shunda.sh
 
 ## in /scratch/sjsmith/muir/snpArcher
 mkdir process_out
@@ -37,4 +37,4 @@ vcftools --gzvcf muir.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --reco
 sbatch --account=def-jonmee run_var2tab_muir.sh
 
 # run filtering script
-python remove_multi.py muir.var.txt muir.var.noMulti.txt
+sbatch --account=def-jonmee run_removeMulti_muir.sh
