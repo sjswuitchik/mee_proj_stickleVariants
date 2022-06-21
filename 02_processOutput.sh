@@ -17,6 +17,9 @@ vcftools --gzvcf shunda.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --re
 # convert filtered VCF to table for use in multiallelic site removal script
 sbatch --account=def-jonmee run_var2tab_shunda.sh
 
+# run filtering script
+python remove_multi.py shunda.var.txt shunda.var.noMulti.txt
+
 ## in /scratch/sjsmith/muir/snpArcher
 mkdir process_out
 cp results/Pungitius_pungitius/GCF_902500615.1_NSP_V7_genomic/Pungitius_pungitius_GCF_902500615.1_NSP_V7_genomic.final.vcf.gz* process_out/
@@ -32,3 +35,6 @@ vcftools --gzvcf muir.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --reco
 
 # convert filtered VCF to table for use in multiallelic site removal script
 sbatch --account=def-jonmee run_var2tab_muir.sh
+
+# run filtering script
+python remove_multi.py muir.var.txt muir.var.noMulti.txt
