@@ -1,6 +1,5 @@
-# set up a GATK4 conda env to convert VCF outside of the snpArcher pipeline
-conda create -n gatk -c bioconda gatk4 vcftools
-conda activate gatk 
+
+conda activate gatk
 
 ## in /scratch/sjsmith/shunda/snpArcher
 mkdir process_out
