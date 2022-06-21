@@ -10,4 +10,4 @@
 
 source activate gatk
 
-gatk VariantsToTable -Xmx8g -V shunda.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -O shunda.var.txt
+gatk VariantsToTable -Xmx8g -V shunda.filt.recode.vcf -F CHROM -F POS -F AF -F REF -F ALT -F AF -F DP -F QD -F FS -F MQ -F MQRankSum -F ReadPosRankSum -F TYPE -F FILTER -GF AD -GF DP -GF GQ -GF GT -GF SB -O shunda.var.txt --split-multi-allelic
