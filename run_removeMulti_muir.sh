@@ -11,4 +11,4 @@
 
 source activate gatk
 
-python remove_multi.py muir.var.txt muir.var.noMulti.txt
+python recode_multi.py muir.var.txt muir.var.noMulti.txt
