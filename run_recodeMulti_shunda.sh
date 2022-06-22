@@ -11,4 +11,4 @@
 
 source activate gatk
 
-python remove_multi.py shunda.var.txt shunda.var.noMulti.txt
+python recode_multi.py shunda.var.txt shunda.var.noMulti.txt
