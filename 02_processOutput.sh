@@ -18,7 +18,7 @@ vcftools --gzvcf shunda.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --re
 sbatch --account=def-jonmee run_var2tab_shunda.sh
 
 # run filtering script
-sbatch --account=def-jonmee run_removeMulti_shunda.sh
+sbatch --account=def-jonmee run_recodeMulti_shunda.sh
 
 ## in /scratch/sjsmith/muir/snpArcher
 mkdir process_out
@@ -37,4 +37,5 @@ vcftools --gzvcf muir.final.vcf.gz --max-missing 0.95 --maf 0.01 --recode --reco
 sbatch --account=def-jonmee run_var2tab_muir.sh
 
 # run filtering script
-sbatch --account=def-jonmee run_removeMulti_muir.sh
+sbatch --account=def-jonmee run_recodeMulti_muir.sh
+# 2429406 SNPs written out 
