@@ -7,5 +7,11 @@ conda install -n snakemake -c conda-forge pandas yappi pyyaml
 # for output processing
 conda create -n gatk -c bioconda -c conda-forge gatk4 vcftools pandas numpy
 
-# for MK tests
-conda create -n mk -c bioconda -c conda-forge -c ets cyvcf2>=0.30.14 tqdm>=4.63.0 bcftools>=1.15 vcftools>=0.1.16 htslib>=1.14 snpeff==5.1 bedtools>=2.30.0 jdk11-ac r-base>=4.1.2 r-tidyverse>=1.3.1 r-r2jags>=0.7_1 r-lme4>=1.1_21 r-arm>=1.12_2
+# for MK tests - was having issues with conda on Cedar building from the yml files, so doing it this way instead
+conda create -n r -c bioconda -c conda-forge -c r r-base
+conda activate r
+conda install -c bioconda -c conda-forge -c r r-tidyverse r-r2jags r-lme4 r-arm
+
+conda create -n snpeff -c bioconda -c conda-forge -c ets snpeff
+conda activate snpeff
+conda install -c bioconda -c conda-forge -c ets cyvcf2 tqdm bcftools vcftools htslib bedtools jdk11-ac
