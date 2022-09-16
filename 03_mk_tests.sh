@@ -6,7 +6,7 @@ conda activate snpeff
 #### Muir #### 
 cd muir_gasAcu
 vcftools --gzvcf muir.final.vcf.gz --missing-indv 
-Rscript missingness.R
+Rscript --vanilla missingness.R muir.imiss gasAcu.imiss
 
 #### Shunda ####
 cd shunda_gasAcu
