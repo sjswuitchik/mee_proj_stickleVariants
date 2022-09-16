@@ -22,7 +22,11 @@ cd muir_gasAcu
 # set up before filtering VCF
 gunzip genes.gff.gz
 vcftools --gzvcf muir.final.vcf.gz --missing-indv --out muir
-Rscript --vanilla missingness.R muir.imiss
+Rscript --vanilla missingness.R muir.imiss ## double check this
+
+
+
+
 awk -f ../helper_scripts/cds.awk genes.gff > onlyCDS.gff
 awk -f ../helper_scripts/gff2bed.awk onlyCDS.gff > onlyCDS.bed
 awk -v OFS='\t' 'match($0, /gene=[^;]+/) {print $1, $2, $3, substr($0, RSTART+5, RLENGTH-5)}' onlyCDS.bed > onlyCDS.genes.bed
