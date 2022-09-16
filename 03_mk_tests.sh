@@ -4,8 +4,8 @@
 
 conda activate snpeff
 cd snpeff 
-mkdir -p data/genome
-cd data/genome
+mkdir -p data/punPun
+cd data/punPun
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/902/500/615/GCF_902500615.1_NSP_V7/GCF_902500615.1_NSP_V7_genomic.fna.gz
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/902/500/615/GCF_902500615.1_NSP_V7/GCF_902500615.1_NSP_V7_genomic.gff.gz
 mv GCF_902500615.1_NSP_V7/GCF_902500615.1_NSP_V7_genomic.fna.gz sequences.fa.gz
