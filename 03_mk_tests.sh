@@ -19,8 +19,16 @@ sbatch --account=def-jonmee snpeff_db.sh
 
 #### Muir #### 
 cd muir_gasAcu
+# set up before filtering VCF
+gunzip genes.gff.gz
 vcftools --gzvcf muir.final.vcf.gz --missing-indv --out muir
 Rscript --vanilla missingness.R muir.imiss
+awk -f ../helper_scripts/cds.awk genes.gff > onlyCDS.gff
+awk -f ../helper_scripts/gff2bed.awk onlyCDS.gff > onlyCDS.bed
+awk -v OFS='\t' 'match($0, /gene=[^;]+/) {print $1, $2, $3, substr($0, RSTART+5, RLENGTH-5)}' onlyCDS.bed > onlyCDS.genes.bed
+bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable_sites.bed
+bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 | bedtools sort -i - | bedtools merge -i - -c 4 -o distinct > callable.cds.bed
+
 
 #### Shunda ####
 cd shunda_gasAcu
