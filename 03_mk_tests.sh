@@ -15,7 +15,7 @@ cp -v genes.gff.gz ../shunda_gasAcu
 
 cd ../..
 # edit the config to include genome info
-sbatch snpeff_db.sh
+sbatch --account=def-jonmee snpeff_db.sh
 
 #### Muir #### 
 cd muir_gasAcu
