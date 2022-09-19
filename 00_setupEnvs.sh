@@ -14,6 +14,6 @@ mamba create -n r -c conda-forge r-tidyverse r-r2jags r-lme4 r-arm
 
 mamba create -n vcf -c bioconda -c conda-forge bcftools vcftools htslib bedtools cyvcf2 tqdm 
 mamba activate vcf 
-mamba install -c conda-forge -c asmeurer glibc libgcc-ng 
+#mamba install -c conda-forge -c asmeurer glibc libgcc-ng 
 
 
