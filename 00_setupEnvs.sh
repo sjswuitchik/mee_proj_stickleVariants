@@ -10,11 +10,11 @@ conda create -n gatk -c bioconda -c conda-forge gatk4 vcftools pandas numpy
 # for MK tests - was having issues with conda on Cedar building from the yml files, so doing it this way instead
 mamba create -n snpeff -c bioconda -c ets snpeff jdk11-ac
 
-mamba create -n r -c bioconda -c conda-forge -c r r-base r-tidyverse r-r2jags r-lme4 r-arm
+mamba create -n r -c conda-forge r-tidyverse r-r2jags r-lme4 r-arm
 
 mamba create -n vcf -c bioconda -c conda-forge bcftools vcftools htslib bedtools
-conda activate vcf 
+mamba activate vcf 
 mamba install -c bioconda -c conda-forge cyvcf2 tqdm 
+mamba install -c conda-forge -c asmeurer glibc libgcc-ng 
 
 
--c asmeurer glibc libgcc-ng 
