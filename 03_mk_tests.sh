@@ -33,7 +33,8 @@ conda activate vcf
 bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable.bed
 # troubleshooting issues with Cedar + bedtools 
 bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > inter.bed 
-bedtools sort -i inter.bed | bedtools merge -i - -c 4 -o distinct > callable.cds.bed
+sort -k 1,1 -k2,2n inter.bed > inter2.bed
+bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
 
 vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir
 vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu
