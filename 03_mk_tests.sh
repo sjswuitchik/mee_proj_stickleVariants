@@ -2,7 +2,6 @@
 # in /scratch/sjsmith/mk_tests
 ## based off https://github.com/sjswuitchik/compPopGen_ms/tree/master/MKpipeline
 
-conda activate snpeff
 cd snpeff 
 mkdir -p data/punPun
 cd data/punPun
@@ -22,16 +21,22 @@ cd muir_gasAcu
 # set up before filtering VCF
 gunzip genes.gff.gz
 vcftools --gzvcf muir.final.vcf.gz --missing-indv --out muir
-Rscript --vanilla missingness.R muir.imiss ## double check this
-
-
-
+conda activate r
+Rscript --vanilla missingness.R muir.imiss 
+conda deactivate 
 
 awk -f ../helper_scripts/cds.awk genes.gff > onlyCDS.gff
 awk -f ../helper_scripts/gff2bed.awk onlyCDS.gff > onlyCDS.bed
 awk -v OFS='\t' 'match($0, /gene=[^;]+/) {print $1, $2, $3, substr($0, RSTART+5, RLENGTH-5)}' onlyCDS.bed > onlyCDS.genes.bed
-bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable_sites.bed
-bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 | bedtools sort -i - | bedtools merge -i - -c 4 -o distinct > callable.cds.bed
+
+conda activate vcf 
+bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable.bed
+# troubleshooting issues with Cedar + bedtools 
+bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > inter.bed 
+bedtools sort -i inter.bed | bedtools merge -i - -c 4 -o distinct > callable.cds.bed
+
+vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir
+vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu
 
 
 #### Shunda ####
