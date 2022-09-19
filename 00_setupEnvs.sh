@@ -14,4 +14,7 @@ conda create -n r -c bioconda -c conda-forge -c r r-base r-tidyverse r-r2jags r-
 
 conda create -n vcf -c bioconda -c conda-forge bcftools vcftools htslib bedtools
 conda activate vcf 
-conda install -c bioconda -c conda-forge -c asmeurer glibc libgcc-ng cyvcf2 tqdm 
+conda install -c bioconda -c conda-forge cyvcf2 tqdm 
+
+
+-c asmeurer glibc libgcc-ng 
