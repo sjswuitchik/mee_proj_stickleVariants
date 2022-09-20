@@ -57,7 +57,7 @@ vcftools --vcf muir.ann.vcf --missing-site --out muir
 vcftools --vcf gasAcu.ann.vcf --missing-site --out gasAcu
 mamba deactivate 
 
-sbatch run_snipre.sh
+sbatch --account=def-jonmee run_snipre_muir.sh
 
 
 #### Shunda ####
