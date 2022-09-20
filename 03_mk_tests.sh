@@ -16,6 +16,9 @@ cd ../..
 # edit the config to include genome info
 sbatch --account=def-jonmee snpeff_db.sh
 
+
+# NB: gasAcu processing as an outgroup is all contained within the Muir workflow below. Shunda workflow will use gasAcu outputs from Muir workflow 
+
 #### Muir #### 
 cd muir_gasAcu
 # set up before filtering VCF
@@ -43,6 +46,10 @@ bedtools intersect -a muir.filter.recode.vcf -b callable.bed -header > muir.clea
 bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
 
 sbatch run_snpEff.sh
+
+python3 ../helper_scripts/annot_parser.py muir.ann.vcf muir.ann.bed -key missense_variant -key synonymous_variant
+python3 ../helper_scripts/annot_parser.py gasAcu.ann.vcf gasAcu.ann.bed -key missense_variant -key synonymous_variant
+
 
 #### Shunda ####
 cd shunda_gasAcu
