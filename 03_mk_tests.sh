@@ -39,8 +39,10 @@ bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > i
 sort -k 1,1 -k2,2n inter.bed > inter2.bed
 bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
 
-vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir
-vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu
+vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir.filter
+# 
+vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu.filter 
+# kept 9009486 out of a possible 13350104 Sites
 
 bedtools intersect -a muir.filter.recode.vcf -b callable.bed -header > muir.clean.vcf
 bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
