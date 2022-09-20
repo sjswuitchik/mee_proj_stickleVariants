@@ -47,7 +47,8 @@ vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min
 bedtools intersect -a muir.filter.recode.vcf -b callable.bed -header > muir.clean.vcf
 bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
 
-sbatch run_snpEff.sh
+sbatch --account=def-jonmee run_snpEff_muir.sh
+sbatch --account=def-jonmee run_snpEff_gasAcu.sh
 
 python3 ../helper_scripts/annot_parser.py muir.ann.vcf muir.ann.bed -key missense_variant -key synonymous_variant
 python3 ../helper_scripts/annot_parser.py gasAcu.ann.vcf gasAcu.ann.bed -key missense_variant -key synonymous_variant
