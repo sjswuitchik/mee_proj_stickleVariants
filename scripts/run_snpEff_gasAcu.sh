@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J snpEff
+#SBATCH -J snpEff_gasAcu
 #SBATCH -o snpEff_out
 #SBATCH -e snpEff_err
 #SBATCH -n 1
@@ -11,4 +11,5 @@
 
 mamba activate snpeff
 
-snpEff ann -Xmx8g -i vcf -o vcf -c snpEff.config punPun /scratch/sjsmith/mk_tests/muir_gasAcu/muir.clean.vcf > muir.ann.vcf
+snpEff ann -Xmx8g -i vcf -o vcf -c snpEff.config punPun /scratch/sjsmith/mk_tests/muir_gasAcu/gasAcu.clean.vcf > gasAcu.ann.vcf
+
