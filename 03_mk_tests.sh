@@ -39,6 +39,10 @@ bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
 vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir
 vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu
 
+bedtools intersect -a muir.filter.recode.vcf -b callable.bed -header > muir.clean.vcf
+bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
+
+sbatch run_snpEff.sh
 
 #### Shunda ####
 cd shunda_gasAcu
