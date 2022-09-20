@@ -32,7 +32,7 @@ awk -f ../helper_scripts/cds.awk genes.gff > onlyCDS.gff
 awk -f ../helper_scripts/gff2bed.awk onlyCDS.gff > onlyCDS.bed
 awk -v OFS='\t' 'match($0, /gene=[^;]+/) {print $1, $2, $3, substr($0, RSTART+5, RLENGTH-5)}' onlyCDS.bed > onlyCDS.genes.bed
 
-conda activate vcf 
+mamba activate vcf 
 bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable.bed
 # troubleshooting issues with Cedar + bedtools 
 bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > inter.bed 
@@ -50,6 +50,15 @@ sbatch run_snpEff.sh
 python3 ../helper_scripts/annot_parser.py muir.ann.vcf muir.ann.bed -key missense_variant -key synonymous_variant
 python3 ../helper_scripts/annot_parser.py gasAcu.ann.vcf gasAcu.ann.bed -key missense_variant -key synonymous_variant
 
+bedtools intersect -a muir.ann.bed -b onlyCDS.genes.bed -wb | cut -f1,2,3,4,8 | bedtools sort -i - | bedtools merge -i - -d -1 -c 4,5 -o distinct > muir.final.bed
+bedtools intersect -a gasAcu.ann.bed -b onlyCDS.genes.bed -wb | cut -f1,2,3,4,8 | bedtools sort -i - | bedtools merge -i - -d -1 -c 4,5 -o distinct > gasAcu.final.bed
+
+vcftools --vcf muir.ann.vcf --missing-site --out muir
+vcftools --vcf gasAcu.ann.vcf --missing-site --out gasAcu
+mamba deactivate 
+
+sbatch prep_snipre.sh # wait to finish before proceeding
+sbatch run_snipre.sh
 
 #### Shunda ####
 cd shunda_gasAcu
