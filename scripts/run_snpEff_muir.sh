@@ -7,7 +7,7 @@
 #SBATCH --mem=0
 #SBATCH --exclusive
 
-# submit from /scratch/sjsmith/mk_tests/snpEff
+# submit from /scratch/sjsmith/mk_tests/snpeff
 
 mamba activate snpeff
 
