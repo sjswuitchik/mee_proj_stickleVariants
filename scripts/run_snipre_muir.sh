@@ -13,4 +13,4 @@ mamba activate r
 
 Rscript --slave --vanilla ../helper_scripts/prep_snipre.R muir.final.bed gasAcu.final.bed muir.lmiss gasAcu.lmiss
 
-Rscript --slave --vanilla ../helper_scripts/run_snipre.R
+Rscript --slave --vanilla ../helper_scripts/run_snipre_muir.R
