@@ -4,7 +4,7 @@ popid: muir # id of the population (no white space)
 nseq: 196 # number of sequences
 L: __________ # total number of observed nucleic sites, including polymorphic and monomorphic
 whether_folded: true # whethr the SFS is folded (true or false)
-SFS: __________________ # snp frequency spectrum: number of singleton, number of doubleton, etc. (separated by white space)
+SFS: 76177 42152 15250 10182 7985 6603 5685 5354 4885 4700 4459 4388 4389 4583 2246 # snp frequency spectrum: number of singleton, number of doubleton, etc. (separated by white space)
 smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
 largest_size_of_SFS_bin_used_for_estimation: 98 # default is nseq/2 for folded SFS
 pct_training: 0.67 # percentage of sites for training
