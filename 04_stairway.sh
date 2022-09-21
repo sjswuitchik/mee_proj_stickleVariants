@@ -15,3 +15,9 @@ vcftools --vcf muir.clean.vcf --max-missing 1 --min-alleles 2 --max-alleles 2 --
 
 # edit frq.counts header to be CHROM  POS N_ALLELES N_CHR MAJOR MINOR
 Rscript calc_sfs_muir.R
+# manually copy SFS into muir.blueprint
+
+cp ../mk_tests/muir_gasAcu/muir.callable_sites_cov.bed .
+Rscript calcL_muir.R
+# manually add L to muir.blueprint
+
