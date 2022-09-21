@@ -9,7 +9,7 @@
 
 # submit from /scratch/sjsmith/mk_tests/shunda_gasAcu
 
-mamba activate r
+conda activate r
 
 Rscript --slave --vanilla ../helper_scripts/prep_snipre_shunda.R shunda.final.bed gasAcu.shunda.final.bed shunda.lmiss gasAcu.shunda.lmiss
 
