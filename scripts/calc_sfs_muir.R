@@ -1,4 +1,6 @@
-library(tidyverse)
+library(readr)
+library(magrittr)
+library(dplyr)
 
 #read in data, rename col names
 data <- read_delim("muir.frq.count", delim = '\t', col_names = T) %>%
