@@ -1,12 +1,12 @@
 #muir blueprint file
 #input setting
 popid: muir # id of the population (no white space)
-nseq:  __ # number of sequences
+nseq: 196 # number of sequences
 L: __________ # total number of observed nucleic sites, including polymorphic and monomorphic
 whether_folded: true # whethr the SFS is folded (true or false)
 SFS: __________________ # snp frequency spectrum: number of singleton, number of doubleton, etc. (separated by white space)
 smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
-largest_size_of_SFS_bin_used_for_estimation: _______ # default is nseq/2 for folded SFS
+largest_size_of_SFS_bin_used_for_estimation: 98 # default is nseq/2 for folded SFS
 pct_training: 0.67 # percentage of sites for training
 nrand: 7 14 21 28 # number of random break points for each try (separated by white space)
 project_dir: output # project directory
@@ -15,7 +15,7 @@ ninput: 200 # number of input files to be created for each estimation
 #random_seed: 2
 #output setting
 mu: _______ # assumed mutation rate per site per generation
-year_per_generation: ______ # assumed generation time (in years)
+year_per_generation: 1 # assumed generation time (in years)
 #plot setting
 plot_title: Muir # title of the plot
 xrange: 0.1,10000 # Time (1k year) range; format: xmin,xmax; "0,0" for default
