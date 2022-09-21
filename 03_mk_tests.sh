@@ -43,7 +43,7 @@ sort -k 1,1 -k2,2n inter.bed > inter2.bed
 bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
 
 vcftools --gzvcf muir.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out muir.filter
-# kept 3945454 out of a possible 34674028 Sites
+# kept 3945454 out of a possible 34674028 Sites, 98/98
 vcftools --gzvcf gasAcu.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --maf 0 --max-missing 0.5 --recode --recode-INFO-all --out gasAcu.filter 
 # kept 9009486 out of a possible 13350104 Sites
 
