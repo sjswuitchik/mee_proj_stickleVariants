@@ -9,6 +9,6 @@
 
 # submit from /scratch/sjsmith/mk_tests/snpEff
 
-mamba activate snpeff
+conda activate snpeff
 
 snpEff ann -Xmx8g -i vcf -o vcf -c snpEff.config punPun /scratch/sjsmith/mk_tests/muir_gasAcu/muir.clean.vcf > muir.ann.vcf
