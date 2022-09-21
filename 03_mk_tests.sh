@@ -17,16 +17,19 @@ cd ../..
 sbatch --account=def-jonmee snpeff_db.sh
 
 
-# NB: gasAcu processing as an outgroup is all contained within the Muir workflow below. Shunda workflow will use gasAcu outputs from Muir workflow 
+# NB: some gasAcu processing as an outgroup is contained within the Muir workflow below. Shunda workflow will use some gasAcu outputs from Muir workflow 
 
 #### Muir #### 
 cd muir_gasAcu
 # set up before filtering VCF
 gunzip genes.gff.gz
+mamba activate vcf
 vcftools --gzvcf muir.final.vcf.gz --missing-indv --out muir
-conda activate r
+mamba deactivate
+
+mamba activate r
 Rscript --vanilla missingness.R muir.imiss 
-conda deactivate 
+mamba deactivate 
 
 awk -f ../helper_scripts/cds.awk genes.gff > onlyCDS.gff
 awk -f ../helper_scripts/gff2bed.awk onlyCDS.gff > onlyCDS.bed
@@ -34,7 +37,7 @@ awk -v OFS='\t' 'match($0, /gene=[^;]+/) {print $1, $2, $3, substr($0, RSTART+5,
 
 mamba activate vcf 
 bedtools intersect -a muir.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable.bed
-# troubleshooting issues with Cedar + bedtools 
+# troubleshooting issues with Cedar + core dumps
 bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > inter.bed 
 sort -k 1,1 -k2,2n inter.bed > inter2.bed
 bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
@@ -65,3 +68,27 @@ sbatch --account=def-jonmee run_snipre_muir.sh
 
 #### Shunda ####
 cd shunda_gasAcu
+mamba activate vcf 
+vcftools --gzvcf shunda.final.vcf.gz --missing-indv --out shunda
+mamba deactivate 
+
+mamba activate r
+Rscript missingness.R shunda.imiss
+mamba deactivate 
+
+cp ../muir_gasAcu/onlyCDS.genes.bed ../muir_gasAcu/gasAcu.filter.recode.vcf .
+
+mamba activate vcf
+bedtools intersect -a shunda.callable_sites_cov.bed -b gasAcu.callable_sites.bed > callable.bed
+bedtools intersect -a callable.bed -b onlyCDS.genes.bed  -wb | cut -f1,2,3,7 > inter.bed 
+sort -k 1,1 -k2,2n inter.bed > inter2.bed
+bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
+
+vcftools --gzvcf shunda.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out shunda.filter
+# 
+
+bedtools intersect -a shunda.filter.recode.vcf -b callable.bed -header > shunda.clean.vcf
+bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
+
+sbatch --account=def-jonmee run_snpEff_shunda.sh
+sbatch --account=def-jonmee run_snpEff_gasAcu_shunda.sh
