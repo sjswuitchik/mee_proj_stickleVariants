@@ -9,7 +9,7 @@
 
 # submit from /scratch/sjsmith/mk_tests/muir_gasAcu
 
-mamba activate r
+conda activate r
 
 Rscript --slave --vanilla ../helper_scripts/prep_snipre.R muir.final.bed gasAcu.final.bed muir.lmiss gasAcu.lmiss
 
