@@ -92,3 +92,18 @@ bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.
 
 sbatch --account=def-jonmee run_snpEff_shunda.sh
 sbatch --account=def-jonmee run_snpEff_gasAcu_shunda.sh
+
+python3 ../helper_scripts/annot_parser.py shunda.ann.vcf shunda.ann.bed -key missense_variant -key synonymous_variant
+python3 ../helper_scripts/annot_parser.py gasAcu.shunda.ann.vcf gasAcu.shunda.ann.bed -key missense_variant -key synonymous_variant
+
+bedtools intersect -a shunda.ann.bed -b onlyCDS.genes.bed -wb | cut -f1,2,3,4,8 | bedtools sort -i - | bedtools merge -i - -d -1 -c 4,5 -o distinct > shunda.final.bed
+bedtools intersect -a gasAcu.shunda.ann.bed -b onlyCDS.genes.bed -wb | cut -f1,2,3,4,8 | bedtools sort -i - | bedtools merge -i - -d -1 -c 4,5 -o distinct > gasAcu.shunda.final.bed
+
+vcftools --vcf shunda.ann.vcf --missing-site --out shunda
+vcftools --vcf gasAcu.shunda.ann.vcf --missing-site --out gasAcu.shunda
+mamba deactivate 
+
+sbatch --account=def-jonmee run_snipre_shunda.sh
+
+
+
