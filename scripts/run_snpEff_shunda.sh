@@ -9,7 +9,7 @@
 
 # submit from /scratch/sjsmith/mk_tests/snpeff
 
-mamba activate snpeff
+conda activate snpeff
 
 snpEff ann -Xmx8g -i vcf -o vcf -c snpEff.config punPun /scratch/sjsmith/mk_tests/shunda_gasAcu/shunda.clean.vcf > shunda.ann.vcf
 
