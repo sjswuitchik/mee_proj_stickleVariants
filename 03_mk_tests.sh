@@ -85,7 +85,7 @@ sort -k 1,1 -k2,2n inter.bed > inter2.bed
 bedtools merge -i inter2.bed -c 4 -o distinct > callable.cds.bed
 
 vcftools --gzvcf shunda.final.vcf.gz --remove-filtered-all --remove-indels --min-alleles 2 --max-alleles 2 --mac 1 --max-missing 0.5 --remove ingroup.remove.indv --recode --recode-INFO-all --out shunda.filter
-# 
+# kept 4836707 out of a possible 36903496 Sites
 
 bedtools intersect -a shunda.filter.recode.vcf -b callable.bed -header > shunda.clean.vcf
 bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.clean.vcf
