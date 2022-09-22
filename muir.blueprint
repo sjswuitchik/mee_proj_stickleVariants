@@ -14,7 +14,7 @@ stairway_plot_dir: stairway_plot_es # directory to the stairway plot files
 ninput: 200 # number of input files to be created for each estimation
 #random_seed: 2
 #output setting
-mu: _______ # assumed mutation rate per site per generation
+mu: 3.44e-9 # assumed mutation rate per site per generation
 year_per_generation: 1 # assumed generation time (in years)
 #plot setting
 plot_title: Muir # title of the plot
