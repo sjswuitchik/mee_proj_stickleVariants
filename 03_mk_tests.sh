@@ -53,6 +53,8 @@ bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.
 sbatch --account=def-jonmee run_snpEff_muir.sh
 sbatch --account=def-jonmee run_snpEff_gasAcu.sh
 
+cp gasAcu.ann.vcf muir.ann.vcf ../muir_gasAcu/
+
 python3 ../helper_scripts/annot_parser.py muir.ann.vcf muir.ann.bed -key missense_variant -key synonymous_variant
 python3 ../helper_scripts/annot_parser.py gasAcu.ann.vcf gasAcu.ann.bed -key missense_variant -key synonymous_variant
 
@@ -92,6 +94,8 @@ bedtools intersect -a gasAcu.filter.recode.vcf -b callable.bed -header > gasAcu.
 
 sbatch --account=def-jonmee run_snpEff_shunda.sh
 sbatch --account=def-jonmee run_snpEff_gasAcu_shunda.sh
+
+cp gasAcu.shunda.ann.vcf shunda.ann.vcf ../shunda_gasAcu/
 
 python3 ../helper_scripts/annot_parser.py shunda.ann.vcf shunda.ann.bed -key missense_variant -key synonymous_variant
 python3 ../helper_scripts/annot_parser.py gasAcu.shunda.ann.vcf gasAcu.shunda.ann.bed -key missense_variant -key synonymous_variant
