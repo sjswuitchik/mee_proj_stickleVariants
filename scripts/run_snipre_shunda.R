@@ -1,5 +1,3 @@
-muir_snipre_data.tsv
-
 #!/usr/bin/Rscript
 
 library(tidyverse)
