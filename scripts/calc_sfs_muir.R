@@ -8,7 +8,7 @@ data <- read_delim("muir.frq.count", delim = '\t', col_names = T) %>%
 
 # calc folded SFS
 fold <- data %>%
-  mutate(fold = ifelse(AC > 15, 30 - AC, AC)) %>%
+  mutate(fold = ifelse(AC > 49, 98 - AC, AC)) %>%
   filter(fold > 0)
 # put SFS into its own var
 sfs <- table(fold$fold)
