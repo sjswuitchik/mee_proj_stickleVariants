@@ -2,7 +2,7 @@
 conda install -n base -c conda-forge mamba=1.0.0
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
 conda activate snakemake 
-conda install -n snakemake -c conda-forge pandas yappi pyyaml perl
+conda install -n snakemake -c conda-forge pandas yappi pyyaml
 
 # for output processing
 conda create -n gatk -c bioconda -c conda-forge gatk4 vcftools pandas numpy
